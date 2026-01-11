@@ -1,350 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nikhil Budhiraja | Software Engineer</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Nikhil Budhiraja | Software Engineer</title>
 
-  <!-- Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/feather-icons"></script>
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
-  <!-- Icons & Animation -->
-  <script src="https://unpkg.com/feather-icons"></script>
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<style>
+:root{--bg:#020617;--card:#020617;--text:#e5e7eb;--muted:#9ca3af;--accent:#38bdf8;--border:#1f2937}
+body.light{--bg:#f8fafc;--card:#ffffff;--text:#0f172a;--muted:#475569;--accent:#2563eb;--border:#3b82f6}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:linear-gradient(145deg,var(--bg),#0f172a);color:var(--text);line-height:1.6;overflow-x:hidden;transition:background .4s ease,color .4s ease}
+body.light{background:linear-gradient(145deg,#f8fafc,#e2e8f0)}
+a{color:var(--accent);text-decoration:none}
 
-  <style>
-    :root {
-      --bg: #020617;
-      --card: #020617;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --accent: #38bdf8;
-      --border: #1f2937;
-    }
+#bgCanvas{position:fixed;inset:0;z-index:-2}
+.glow{position:fixed;width:420px;height:420px;background:radial-gradient(circle,rgba(56,189,248,.25),transparent 70%);filter:blur(90px);animation:float 14s ease-in-out infinite alternate;z-index:-1}
+.glow.one{top:5%;left:5%}
+.glow.two{bottom:5%;right:5%;animation-delay:5s}
+@keyframes float{from{transform:translateY(0)}to{transform:translateY(-80px)}}
 
-    body.light {
-      --bg: #f8fafc;
-      --card: #ffffff;
-      --text: #0f172a;
-      --muted: #475569;
-      --accent: #2563eb;
-      --border: #3b82f6;
-    }
+.container{max-width:1100px;margin:auto;padding:80px 20px}
+.hero{text-align:center;padding-bottom:100px}
+.hero h1{font-size:3.5rem;font-weight:800;background:linear-gradient(90deg,#38bdf8,#22d3ee);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{margin-top:15px;font-size:1.25rem;color:var(--muted)}
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+.links{margin-top:30px;display:flex;justify-content:center;gap:20px}
+.links a{padding:12px 22px;border-radius:10px;border:2px solid var(--border);background:rgba(255,255,255,.02);backdrop-filter:blur(6px);transition:all .3s ease;font-weight:500}
+body.light .links a{border-color:#3b82f6;background:rgba(37,99,235,.08)}
+.links a:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 10px 30px rgba(56,189,248,.3)}
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(145deg, var(--bg), #0f172a);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-      transition: background 0.4s ease, color 0.4s ease;
-    }
+section{margin-bottom:80px}
+section h2{font-size:2rem;color:var(--text);margin-bottom:30px;padding-bottom:15px;border-bottom:3px solid var(--accent);display:inline-block}
+body.light section h2{border-bottom-color:#3b82f6;color:#0f172a}
 
-    body.light {
-      background: linear-gradient(145deg, #f8fafc, #e2e8f0);
-    }
+.content-box{background:rgba(30,41,59,.4);backdrop-filter:blur(8px);border:2px solid rgba(56,189,248,.3);border-radius:12px;padding:25px;margin-bottom:20px;transition:all .3s ease;box-shadow:0 8px 32px rgba(0,0,0,.1)}
+body.light .content-box{background:#fff;border:2px solid #3b82f6;color:#0f172a;box-shadow:0 4px 12px rgba(59,130,246,.2)}
+.content-box:hover{transform:translateY(-5px);border-color:var(--accent);box-shadow:0 15px 40px rgba(56,189,248,.25)}
+body.light .content-box:hover{border-color:#3b82f6;box-shadow:0 12px 28px rgba(59,130,246,.3)}
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
+.content-box h3{font-size:1.3rem;margin-bottom:12px;color:var(--text);font-weight:600}
+body.light .content-box h3{color:#0f172a}
+.content-box p{color:var(--text);line-height:1.8;font-size:.95rem;margin-bottom:8px}
+body.light .content-box p{color:#1f2937}
 
-    /* ===== BACKGROUND ===== */
-    canvas,
-    .glow {
-      pointer-events: none;
-    }
+.skill-tag{display:inline-block;background:rgba(56,189,248,.2);color:var(--accent);padding:6px 12px;border-radius:20px;margin:5px;font-size:.85rem;border:1px solid rgba(56,189,248,.3)}
+body.light .skill-tag{background:#dbeafe;color:#1e40af;border:1.5px solid #3b82f6}
 
-    #bgCanvas {
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-    }
+.cert-tag{display:inline-block;background:rgba(56,189,248,.15);color:var(--accent);padding:8px 14px;border-radius:6px;margin:8px;font-size:.9rem;border:1px solid rgba(56,189,248,.3)}
+body.light .cert-tag{background:#eff6ff;color:#1e40af;border:1px solid #3b82f6}
 
-    .glow {
-      position: fixed;
-      width: 420px;
-      height: 420px;
-      background: radial-gradient(circle, rgba(56,189,248,0.25), transparent 70%);
-      filter: blur(90px);
-      animation: float 14s ease-in-out infinite alternate;
-      z-index: -1;
-    }
+.footer{text-align:center;padding:40px 0;color:var(--muted);border-top:1px solid rgba(56,189,248,.1)}
 
-    .glow.one { top: 5%; left: 5%; }
-    .glow.two { bottom: 5%; right: 5%; animation-delay: 5s; }
+/* ✅ ONLY CHANGE */
+.theme-toggle{
+  position:fixed!important;
+  top:25px!important;
+  right:25px!important;
+  left:auto!important;
+  bottom:auto!important;
+  width:52px!important;
+  height:52px!important;
+  border-radius:50%!important;
+  background:rgba(56,189,248,.3)!important;
+  border:2px solid #38bdf8!important;
+  cursor:pointer!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  z-index:9999!important;
+  padding:0!important;
+  pointer-events:auto!important;
+  transition:all .3s ease!important;
+  box-shadow:0 0 20px rgba(56,189,248,.2)!important
+}
+.theme-toggle:hover{transform:scale(1.1);background:rgba(56,189,248,.5);box-shadow:0 0 30px rgba(56,189,248,.4)}
+.theme-toggle svg{width:28px;height:28px}
+body.light .theme-toggle{border-color:#3b82f6;background:rgba(59,130,246,.2)}
 
-    @keyframes float {
-      from { transform: translateY(0); }
-      to { transform: translateY(-80px); }
-    }
-
-    /* ===== THEME TOGGLE (FIXED) ===== */
-    .theme-toggle {
-      position: fixed;
-      top: 24px;
-      right: 24px;
-      left: unset;
-      bottom: unset;
-
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-
-      background: rgba(56,189,248,0.3);
-      border: 2px solid #38bdf8;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      cursor: pointer;
-      z-index: 10000;
-      padding: 0;
-
-      box-shadow: 0 0 20px rgba(56,189,248,0.25);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .theme-toggle:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 30px rgba(56,189,248,0.45);
-    }
-
-    body.light .theme-toggle {
-      background: rgba(59,130,246,0.25);
-      border-color: #3b82f6;
-    }
-
-    /* ===== LAYOUT ===== */
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 80px 20px;
-    }
-
-    .hero {
-      text-align: center;
-      padding-bottom: 100px;
-    }
-
-    .hero h1 {
-      font-size: 3.5rem;
-      font-weight: 800;
-      background: linear-gradient(90deg, #38bdf8, #22d3ee);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero p {
-      margin-top: 15px;
-      font-size: 1.2rem;
-      color: var(--muted);
-    }
-
-    .links {
-      margin-top: 30px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .links a {
-      padding: 12px 22px;
-      border-radius: 10px;
-      border: 2px solid var(--border);
-      background: rgba(255,255,255,0.02);
-      backdrop-filter: blur(6px);
-      transition: all 0.3s ease;
-      font-weight: 500;
-    }
-
-    .links a:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent);
-      box-shadow: 0 10px 30px rgba(56,189,248,0.3);
-    }
-
-    section {
-      margin-bottom: 80px;
-    }
-
-    section h2 {
-      font-size: 2rem;
-      margin-bottom: 30px;
-      padding-bottom: 15px;
-      border-bottom: 3px solid var(--accent);
-      display: inline-block;
-    }
-
-    .content-box {
-      background: rgba(30,41,59,0.45);
-      backdrop-filter: blur(8px);
-      border: 2px solid rgba(56,189,248,0.3);
-      border-radius: 14px;
-      padding: 25px;
-      margin-bottom: 25px;
-      transition: all 0.3s ease;
-    }
-
-    body.light .content-box {
-      background: #ffffff;
-      color: #0f172a;
-      border-color: #3b82f6;
-    }
-
-    .content-box:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 15px 40px rgba(56,189,248,0.25);
-    }
-
-    .skill-tag {
-      display: inline-block;
-      background: rgba(56,189,248,0.2);
-      color: var(--accent);
-      padding: 6px 12px;
-      border-radius: 20px;
-      margin: 6px;
-      font-size: 0.85rem;
-      border: 1px solid rgba(56,189,248,0.3);
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px 0;
-      color: var(--muted);
-      border-top: 1px solid rgba(56,189,248,0.1);
-    }
-
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 2.5rem; }
-      .theme-toggle {
-        width: 48px;
-        height: 48px;
-        top: 18px;
-        right: 18px;
-      }
-    }
-  </style>
+@media(max-width:768px){
+.hero h1{font-size:2.5rem}
+.hero p{font-size:1rem}
+.links{flex-direction:column}
+.links a{width:100%}
+.theme-toggle{
+  width:48px!important;
+  height:48px!important;
+  top:20px!important;
+  right:15px!important;
+  left:auto!important;
+  bottom:auto!important;
+}}
+</style>
 </head>
 
 <body>
 
-  <canvas id="bgCanvas"></canvas>
-  <div class="glow one"></div>
-  <div class="glow two"></div>
+<div class="glow one"></div>
+<div class="glow two"></div>
+<canvas id="bgCanvas"></canvas>
 
-  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"></button>
+<button class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode" aria-label="Toggle theme"></button>
 
-  <div class="container">
+<div class="container">
 
-    <section class="hero" data-aos="fade-up">
-      <h1>Nikhil Budhiraja</h1>
-      <p>Software Engineer • Python • SQL • AI/ML</p>
-      <div class="links">
-        <a href="https://linkedin.com" target="_blank">LinkedIn</a>
-        <a href="https://github.com/nikhil0912" target="_blank">GitHub</a>
-        <a href="mailto:nikhilbudhiraja@example.com">Email</a>
-      </div>
-    </section>
+<section class="hero">
+<h1>Nikhil Budhiraja</h1>
+<p>Software Engineer • Python • SQL • AI/ML</p>
+<div class="links">
+<a href="https://linkedin.com" target="_blank">LinkedIn</a>
+<a href="https://github.com/nikhil0912" target="_blank">GitHub</a>
+<a href="mailto:nikhilbudhiraja@example.com">Email</a>
+</div>
+</section>
 
-    <section data-aos="fade-up">
-      <h2>About Me</h2>
-      <div class="content-box">
-        Results-driven Software Engineer with 2+ years of experience in Python, SQL, full-stack development, and AI/ML.
-      </div>
-    </section>
+<section>
+<h2>About Me</h2>
+<div class="content-box">
+<p>Results-driven Software Engineer with 2+ years of experience in Python, SQL, full-stack development, and AI/ML. Known for optimizing systems, building scalable pipelines, and delivering high-impact engineering solutions.</p>
+</div>
+</section>
 
-    <section data-aos="fade-up">
-      <h2>Skills</h2>
-      <div class="content-box">
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">SQL</span>
-        <span class="skill-tag">JavaScript</span>
-        <span class="skill-tag">AI / ML</span>
-        <span class="skill-tag">Docker</span>
-        <span class="skill-tag">Git</span>
-      </div>
-    </section>
+<section>
+<h2>Experience</h2>
+<div class="content-box">
+<h3>Analyst 2 - Deloitte Consulting</h3>
+<p><strong>Duration:</strong> Apr 2025 - Present | Gurgaon</p>
+<p>• Optimized Python data pipelines, achieving 30% faster execution</p>
+<p>• Automated legacy workflows reducing manual overhead</p>
+<p>• Conducted code reviews and mentored junior engineers</p>
+</div>
+<div class="content-box">
+<h3>Associate Software Engineer - Carelon Global Solutions</h3>
+<p><strong>Duration:</strong> Aug 2022 - Mar 2025 | Gurgaon</p>
+<p>• Built full-stack web applications using Python and JavaScript</p>
+<p>• Implemented automated testing pipelines reducing bugs by 35%</p>
+<p>• Collaborated with cross-functional teams on healthcare solutions</p>
+</div>
+</section>
 
-    <footer>
-      © 2025 Nikhil Budhiraja
-    </footer>
-  </div>
+<section>
+<h2>Skills</h2>
+<div class="content-box">
+<span class="skill-tag">Python</span>
+<span class="skill-tag">SQL</span>
+<span class="skill-tag">JavaScript</span>
+<span class="skill-tag">React</span>
+<span class="skill-tag">Node.js</span>
+<span class="skill-tag">AI/ML</span>
+<span class="skill-tag">Docker</span>
+<span class="skill-tag">Git</span>
+<span class="skill-tag">AWS</span>
+<span class="skill-tag">LangChain</span>
+</div>
+</section>
 
-  <script>
-    AOS.init();
+<section>
+<h2>Certifications</h2>
+<div class="content-box">
+<span class="cert-tag">Learn Selenium with Python, PyTest & Frameworks - Udemy (Jan 2026)</span>
+<span class="cert-tag">Python Automation Testing with Pytest - Udemy (Jan 2026)</span>
+<span class="cert-tag">Advanced Python Programming - Udemy</span>
+<span class="cert-tag">Data Science with Python - Coursera</span>
+<span class="cert-tag">Machine Learning Fundamentals - Udemy</span>
+<span class="cert-tag">Cloud Computing Essentials - AWS</span>
+<span class="cert-tag">Web Development Bootcamp - Udemy</span>
+<span class="cert-tag">Database Design & SQL - Coursera</span>
+<span class="cert-tag">AI/ML Specialization - Udemy</span>
+<span class="cert-tag">DevOps Fundamentals - Linux Academy</span>
+</div>
+</section>
 
-    /* ===== PARTICLES ===== */
-    const canvas = document.getElementById('bgCanvas');
-    const ctx = canvas.getContext('2d');
-    let particles = [];
+<section>
+<h2>Projects</h2>
+<div class="content-box">
+<h3>AI-Powered Data Pipeline</h3>
+<p>Built an automated pipeline using Python and ML models to process 1M+ records daily. Reduced processing time by 60% and improved data accuracy to 99.2%.</p>
+</div>
+<div class="content-box">
+<h3>Full-Stack E-Commerce Platform</h3>
+<p>Developed a scalable e-commerce platform with React frontend and Python backend. Integrated payment gateway, inventory management, and real-time analytics.</p>
+</div>
+</section>
 
-    function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resize);
-    resize();
+<footer class="footer">
+<p>© 2025 Nikhil Budhiraja. All rights reserved.</p>
+</footer>
 
-    function initParticles() {
-      particles = [];
-      for (let i = 0; i < 90; i++) {
-        particles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.4,
-          vy: (Math.random() - 0.5) * 0.4,
-          r: Math.random() * 1.5 + 0.5
-        });
-      }
-    }
+</div>
 
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => {
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-        ctx.fillStyle = 'rgba(56,189,248,0.6)';
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fill();
-      });
-      requestAnimationFrame(animate);
-    }
+<script>
+AOS.init();
 
-    initParticles();
-    animate();
-
-    /* ===== THEME TOGGLE ===== */
-    const toggle = document.getElementById('themeToggle');
-    const saved = localStorage.getItem('theme') || 'dark';
-    document.body.classList.toggle('light', saved === 'light');
-
-    function updateIcon() {
-      toggle.innerHTML = document.body.classList.contains('light')
-        ? feather.icons.sun.toSvg({ size: 26 })
-        : feather.icons.moon.toSvg({ size: 26 });
-    }
-
-    updateIcon();
-
-    toggle.addEventListener('click', () => {
-      document.body.classList.toggle('light');
-      localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
-      updateIcon();
-    });
-  </script>
-
-</body>
-</html>
+function initParticles(){
+const canvas=document.getElementById('bgCanvas');
+const ctx=canvas.getContext('2d');
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+const isDark=!document.body.classList.contains('light');
+const particles=[];
+for(let i=0;i<80;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+radius:Math.random()*1.5,
+vx:(Math.random()-.5)*.5,
+vy:(Math.random()-.5)*.5
+})
+}
+function drawParticles(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+c
