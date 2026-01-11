@@ -51,7 +51,7 @@
       justify-content: space-between;
       align-items: center;
       backdrop-filter: var(--blur);
-      background: rgba(10,14,30,0.6);
+      background: rgba(10,14,30,0.65);
       border-bottom: 1px solid rgba(255,255,255,0.05);
       z-index: 100;
     }
@@ -157,7 +157,7 @@
 
     .section-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
       gap: 36px;
       width: 100%;
     }
@@ -219,9 +219,9 @@
     <div>
       <h2>Hi, I’m <span class="gradient-text">Nikhil Budhiraja</span><br/>Software Engineer</h2>
       <p>
-        Results-driven Software Engineer with 2+ years of professional experience in Python, SQL,
-        and full-stack development. Proven track record of optimizing systems, automating workflows,
-        and delivering scalable, production-grade solutions.
+        Results-driven Software Engineer with 2+ years of experience in Python, SQL, and full-stack
+        development. Proven at optimizing systems, automating workflows, and building scalable,
+        production-ready solutions.
       </p>
       <div class="cta">
         <a href="#projects" class="btn primary">View Work</a>
@@ -231,8 +231,8 @@
     <div class="card">
       <h3>Currently</h3>
       <p>
-        Analyst 2 at Deloitte Consulting USI, focused on backend systems, data pipelines,
-        automation, and modern engineering practices.
+        Analyst 2 at Deloitte Consulting USI, working on backend systems,
+        Python data pipelines, automation, and modern engineering practices.
       </p>
     </div>
   </div>
@@ -245,7 +245,7 @@
       <p>
         Results-driven Software Engineer with hands-on expertise in Python, SQL, and system architecture.
         Strong foundation in AI/ML, database management, and performance optimization.
-        Actively seeking opportunities to contribute technical excellence to high-impact engineering teams.
+        Seeking opportunities to contribute technical excellence and innovation to high-impact engineering teams.
       </p>
     </div>
   </div>
@@ -273,12 +273,15 @@
 <section id="skills">
   <div class="section-grid">
     <div class="card">
-      <h3>Core Skills</h3>
+      <h3>Technical Skills</h3>
       <p>Python · SQL · JavaScript · React · Node.js · AI/ML · Docker · Git · AWS · LangChain</p>
     </div>
     <div class="card">
       <h3>Certifications</h3>
-      <p>Advanced Python · PyTest Automation · Data Science · Machine Learning · Cloud Computing · DevOps</p>
+      <p>
+        Advanced Python · PyTest Automation · Data Science · Machine Learning ·
+        Cloud Computing · DevOps · Web Development · Database Design
+      </p>
     </div>
   </div>
 </section>
@@ -288,15 +291,15 @@
     <div class="card">
       <h3>AI-Powered Data Pipeline</h3>
       <p>
-        Automated ML-driven pipeline processing 1M+ records daily,
+        Built an ML-driven pipeline processing 1M+ records daily,
         reducing processing time by 60% and achieving 99.2% data accuracy.
       </p>
     </div>
     <div class="card">
       <h3>Full-Stack E-Commerce Platform</h3>
       <p>
-        Scalable platform with React frontend and Python backend,
-        featuring payment integration, inventory management, and analytics.
+        Developed a scalable platform with React frontend and Python backend,
+        including payment integration, inventory management, and real-time analytics.
       </p>
     </div>
   </div>
@@ -307,7 +310,8 @@
     <div class="card">
       <h3>Let’s Connect</h3>
       <p>Email: <a href="mailto:nikhilbudhiraja002@gmail.com">nikhilbudhiraja002@gmail.com</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/nikhil-budhiraja-050534190/" target="_blank">linkedin.com/in/nikhil-budhiraja</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/nikhil-budhiraja-050534190/" target="_blank">
+        linkedin.com/in/nikhil-budhiraja</a></p>
     </div>
   </div>
 </section>
@@ -327,16 +331,19 @@
   }
 
   class Particle {
-    constructor() {
-      this.reset();
-    }
+    constructor() { this.reset(); }
     reset() {
       this.x = Math.random() * w;
       this.y = Math.random() * h;
-      this.r = Math.random() * 2 + 1;
       this.vx = (Math.random() - 0.5) * 0.4;
       this.vy = (Math.random() - 0.5) * 0.4;
+      this.r = Math.random() * 1.5 + 0.5;
       this.a = Math.random() * 0.6 + 0.2;
+    }
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      if (this.x < 0 || this.x > w || this.y < 0 || this.y > h) this.reset();
     }
     draw() {
       ctx.beginPath();
@@ -344,16 +351,11 @@
       ctx.fillStyle = `rgba(56,189,248,${this.a})`;
       ctx.fill();
     }
-    update() {
-      this.x += this.vx;
-      this.y += this.vy;
-      if (this.x < 0 || this.x > w || this.y < 0 || this.y > h) this.reset();
-    }
   }
 
   function init() {
     resize();
-    particles = Array.from({ length: Math.floor(w / 12) }, () => new Particle());
+    particles = Array.from({ length: Math.floor(w / 10) }, () => new Particle());
   }
 
   function animate() {
