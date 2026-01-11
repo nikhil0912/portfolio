@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nikhil Budhiraja | Software Engineer</title>
 
-  <!-- Google Font (Best for engineers) -->
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Icons -->
-  <script src="https://unpkg.com/feather-icons">  </script>
+  <script src="https://unpkg.com/feather-icons"></script>
 
   <!-- AOS Animation -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
@@ -17,42 +17,52 @@
 
   <style>
     :root {
-      --bg: #0f172a;
-      --card: #111827;
+      --bg: #020617;
+      --card: #020617;
       --text: #e5e7eb;
       --muted: #9ca3af;
       --accent: #38bdf8;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Inter', sans-serif;
       background: linear-gradient(145deg, #020617, #0f172a);
       color: var(--text);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
+    a { color: var(--accent); text-decoration: none; }
+
+    #bgCanvas {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
     }
 
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 80px 20px;
+    .glow {
+      position: fixed;
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, rgba(56,189,248,0.25), transparent 70%);
+      filter: blur(90px);
+      animation: float 14s ease-in-out infinite alternate;
+      z-index: -1;
     }
 
-    /* Hero */
-    .hero {
-      text-align: center;
-      padding-bottom: 100px;
+    .glow.one { top: 5%; left: 5%; }
+    .glow.two { bottom: 5%; right: 5%; animation-delay: 5s; }
+
+    @keyframes float {
+      from { transform: translateY(0); }
+      to { transform: translateY(-80px); }
     }
+
+    .container { max-width: 1100px; margin: auto; padding: 80px 20px; }
+
+    .hero { text-align: center; padding-bottom: 100px; }
 
     .hero h1 {
       font-size: 3.5rem;
@@ -62,45 +72,29 @@
       -webkit-text-fill-color: transparent;
     }
 
-    .hero p {
-      margin-top: 15px;
-      font-size: 1.25rem;
-      color: var(--muted);
-    }
+    .hero p { margin-top: 15px; font-size: 1.25rem; color: var(--muted); }
 
-    .hero .links {
-      margin-top: 30px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
+    .links { margin-top: 30px; display: flex; justify-content: center; gap: 20px; }
 
-    .hero .links a {
+    .links a {
       padding: 12px 22px;
-      border-radius: 8px;
-      border: 1px solid #1f2933;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
       background: rgba(255,255,255,0.02);
       backdrop-filter: blur(6px);
       transition: all 0.3s ease;
       font-weight: 500;
     }
 
-    .hero .links a:hover {
-      transform: translateY(-3px);
+    .links a:hover {
+      transform: translateY(-4px);
       border-color: var(--accent);
-      box-shadow: 0 10px 30px rgba(56,189,248,0.25);
+      box-shadow: 0 10px 30px rgba(56,189,248,0.3);
     }
 
-    /* Section */
-    section {
-      margin-bottom: 80px;
-    }
+    section { margin-bottom: 80px; }
 
-    section h2 {
-      font-size: 2rem;
-      margin-bottom: 25px;
-      position: relative;
-    }
+    section h2 { font-size: 2rem; margin-bottom: 25px; }
 
     section h2::after {
       content: '';
@@ -112,11 +106,10 @@
       border-radius: 2px;
     }
 
-    /* Card */
     .card {
       background: linear-gradient(145deg, #020617, #020617);
       border: 1px solid #1f2937;
-      border-radius: 16px;
+      border-radius: 18px;
       padding: 30px;
       margin-bottom: 25px;
       transition: all 0.35s ease;
@@ -128,31 +121,10 @@
       border-color: var(--accent);
     }
 
-    .card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 8px;
-    }
+    ul { margin-top: 15px; padding-left: 20px; }
+    ul li { margin-bottom: 10px; }
 
-    .card span {
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    ul {
-      margin-top: 15px;
-      padding-left: 20px;
-    }
-
-    ul li {
-      margin-bottom: 10px;
-    }
-
-    /* Skills */
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
+    .skills { display: flex; flex-wrap: wrap; gap: 12px; }
 
     .skill {
       padding: 10px 16px;
@@ -162,55 +134,41 @@
       font-size: 0.9rem;
     }
 
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 40px 0;
-      color: var(--muted);
-      font-size: 0.9rem;
+    footer { text-align: center; padding: 40px 0; color: var(--muted); font-size: 0.9rem; }
+
+    .code-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.08;
+      font-size: 3rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 60px;
+      align-items: center;
+      justify-content: center;
     }
 
     @media(max-width:768px) {
       .hero h1 { font-size: 2.5rem; }
       .hero p { font-size: 1.1rem; }
+      .code-bg { font-size: 2rem; }
     }
-      /* Particle Canvas */
-    #bgCanvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -1;
-    }
-
-    .glow {
-      position: absolute;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(56,189,248,0.25), transparent 70%);
-      filter: blur(80px);
-      animation: float 12s ease-in-out infinite alternate;
-    }
-
-    .glow.one { top: 10%; left: 10%; }
-    .glow.two { bottom: 10%; right: 10%; animation-delay: 4s; }
-
-    @keyframes float {
-      from { transform: translateY(0px); }
-      to { transform: translateY(-60px); }
-    }
-
   </style>
 </head>
 <body>
+
   <canvas id="bgCanvas"></canvas>
   <div class="glow one"></div>
   <div class="glow two"></div>
 
+  <div class="code-bg">
+    <span>&lt;/&gt;</span><span>{ }</span><span>AI</span><span>ML</span><span>SQL</span><span>01</span>
+  </div>
+
   <div class="container">
 
-    <!-- Hero -->
     <div class="hero" data-aos="fade-up">
       <h1>Nikhil Budhiraja</h1>
       <p>Software Engineer • Python • SQL • AI/ML</p>
@@ -221,7 +179,6 @@
       </div>
     </div>
 
-    <!-- About -->
     <section data-aos="fade-up">
       <h2>About Me</h2>
       <div class="card">
@@ -229,10 +186,8 @@
       </div>
     </section>
 
-    <!-- Experience -->
     <section data-aos="fade-up">
       <h2>Experience</h2>
-
       <div class="card">
         <h3>Analyst 2 – Deloitte Consulting</h3>
         <span>Apr 2025 – Present | Gurugram</span>
@@ -242,7 +197,6 @@
           <li>Conducted code reviews and mentored junior engineers</li>
         </ul>
       </div>
-
       <div class="card">
         <h3>Associate Software Engineer – Carelon Global Solutions</h3>
         <span>Aug 2023 – Mar 2025 | Gurugram</span>
@@ -254,7 +208,6 @@
       </div>
     </section>
 
-    <!-- Projects -->
     <section data-aos="fade-up">
       <h2>Projects</h2>
       <div class="card">
@@ -267,7 +220,6 @@
       </div>
     </section>
 
-    <!-- Skills -->
     <section data-aos="fade-up">
       <h2>Skills</h2>
       <div class="skills">
@@ -283,14 +235,10 @@
       </div>
     </section>
 
-    <footer>
-      © 2026 Nikhil Budhiraja • Built with AI
-    </footer>
-
+    <footer>© 2026 Nikhil Budhiraja • Built with AI</footer>
   </div>
 
   <script>
-        // Particle background
     const canvas = document.getElementById('bgCanvas');
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -299,7 +247,6 @@
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     }
-
     window.addEventListener('resize', resize);
     resize();
 
@@ -307,9 +254,9 @@
       constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 0.3;
-        this.vy = (Math.random() - 0.5) * 0.3;
-        this.size = Math.random() * 2 + 0.5;
+        this.vx = (Math.random() - 0.5) * 0.35;
+        this.vy = (Math.random() - 0.5) * 0.35;
+        this.size = Math.random() * 2 + 0.8;
       }
       draw() {
         ctx.beginPath();
@@ -326,16 +273,34 @@
       }
     }
 
-    for (let i = 0; i < 120; i++) particles.push(new Particle());
+    for (let i = 0; i < 140; i++) particles.push(new Particle());
+
+    function drawConnections() {
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120) {
+            ctx.beginPath();
+            ctx.strokeStyle = 'rgba(56,189,248,' + (1 - dist / 120) * 0.25 + ')';
+            ctx.lineWidth = 0.6;
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+    }
 
     function animate() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       particles.forEach(p => p.update());
+      drawConnections();
       requestAnimationFrame(animate);
     }
 
     animate();
-
     AOS.init({ duration: 900, once: true });
     feather.replace();
   </script>
