@@ -6,22 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nikhil Budhiraja | Software Engineer</title>
 
-  <!-- Google Fonts -->
+  <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
 
   <style>
     :root {
       --bg: #0b0f1a;
       --bg-soft: #11162a;
-      --primary: #6cf2c2;
-      --secondary: #5b7cfa;
+      --primary: #38bdf8;
+      --secondary: #22d3ee;
       --text: #e6e9f0;
       --muted: #9aa3c7;
       --glass: rgba(255,255,255,0.06);
-      --blur: blur(12px);
+      --blur: blur(14px);
     }
 
     * {
@@ -53,19 +51,19 @@
       justify-content: space-between;
       align-items: center;
       backdrop-filter: var(--blur);
-      background: rgba(10,14,30,0.55);
+      background: rgba(10,14,30,0.6);
       border-bottom: 1px solid rgba(255,255,255,0.05);
       z-index: 100;
     }
 
     header h1 {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: 700;
       letter-spacing: 1px;
     }
 
     nav a {
-      margin-left: 28px;
+      margin-left: 26px;
       text-decoration: none;
       color: var(--muted);
       font-weight: 500;
@@ -87,10 +85,11 @@
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
       gap: 60px;
+      width: 100%;
     }
 
     .hero h2 {
-      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-size: clamp(2.6rem, 5vw, 4rem);
       font-weight: 800;
       line-height: 1.1;
       margin-bottom: 20px;
@@ -105,13 +104,14 @@
     .hero p {
       color: var(--muted);
       font-size: 1.05rem;
-      max-width: 520px;
+      max-width: 560px;
       margin-bottom: 40px;
+      line-height: 1.7;
     }
 
     .cta {
       display: flex;
-      gap: 20px;
+      gap: 18px;
     }
 
     .btn {
@@ -127,7 +127,7 @@
     .btn.primary {
       background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: #000;
-      box-shadow: 0 10px 40px rgba(108,242,194,0.25);
+      box-shadow: 0 10px 40px rgba(56,189,248,0.25);
     }
 
     .btn.secondary {
@@ -138,7 +138,7 @@
 
     .btn:hover {
       transform: translateY(-4px);
-      box-shadow: 0 14px 50px rgba(91,124,250,0.35);
+      box-shadow: 0 14px 50px rgba(34,211,238,0.35);
     }
 
     .card {
@@ -155,35 +155,29 @@
       box-shadow: 0 30px 80px rgba(0,0,0,0.5);
     }
 
-    .skills-grid {
+    .section-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+      gap: 36px;
       width: 100%;
     }
 
-    .skills-grid h3 {
+    h3 {
       margin-bottom: 12px;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
     }
 
-    .skills-grid p {
+    p {
       color: var(--muted);
       font-size: .95rem;
-    }
-
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
-      gap: 40px;
-      width: 100%;
+      line-height: 1.7;
     }
 
     footer {
       padding: 60px 40px;
       text-align: center;
       color: var(--muted);
-      font-size: .9rem;
+      font-size: .85rem;
     }
 
     footer a {
@@ -212,6 +206,8 @@
   <h1>Nikhil.dev</h1>
   <nav>
     <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
     <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
@@ -223,9 +219,9 @@
     <div>
       <h2>Hi, I’m <span class="gradient-text">Nikhil Budhiraja</span><br/>Software Engineer</h2>
       <p>
-        I design and build modern, scalable software solutions with a focus on clean architecture,
-        performance, and delightful user experiences. Passionate about turning ideas into
-        production-ready systems.
+        Results-driven Software Engineer with 2+ years of professional experience in Python, SQL,
+        and full-stack development. Proven track record of optimizing systems, automating workflows,
+        and delivering scalable, production-grade solutions.
       </p>
       <div class="cta">
         <a href="#projects" class="btn primary">View Work</a>
@@ -235,63 +231,89 @@
     <div class="card">
       <h3>Currently</h3>
       <p>
-        Working professional in IT, exploring system design, backend engineering,
-        DevOps fundamentals, and modern frontend technologies.
+        Analyst 2 at Deloitte Consulting USI, focused on backend systems, data pipelines,
+        automation, and modern engineering practices.
       </p>
     </div>
   </div>
 </section>
 
+<section id="about">
+  <div class="section-grid">
+    <div class="card">
+      <h3>About Me</h3>
+      <p>
+        Results-driven Software Engineer with hands-on expertise in Python, SQL, and system architecture.
+        Strong foundation in AI/ML, database management, and performance optimization.
+        Actively seeking opportunities to contribute technical excellence to high-impact engineering teams.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-grid">
+    <div class="card">
+      <h3>Analyst 2 — Deloitte Consulting USI</h3>
+      <p><strong>Apr 2025 – Present | Gurgaon</strong></p>
+      <p>• Optimized Python data pipelines achieving 30% faster execution</p>
+      <p>• Automated legacy workflows reducing manual overhead</p>
+      <p>• Conducted code reviews and mentored junior engineers</p>
+    </div>
+    <div class="card">
+      <h3>Associate Software Engineer — Carelon Global Solutions</h3>
+      <p><strong>Aug 2022 – Mar 2025 | Gurgaon</strong></p>
+      <p>• Built full-stack applications using Python and JavaScript</p>
+      <p>• Implemented automated testing pipelines reducing bugs by 35%</p>
+      <p>• Collaborated with cross-functional teams on healthcare platforms</p>
+    </div>
+  </div>
+</section>
+
 <section id="skills">
-  <div class="skills-grid">
+  <div class="section-grid">
     <div class="card">
-      <h3>Languages</h3>
-      <p>Python, Java, JavaScript, SQL</p>
+      <h3>Core Skills</h3>
+      <p>Python · SQL · JavaScript · React · Node.js · AI/ML · Docker · Git · AWS · LangChain</p>
     </div>
     <div class="card">
-      <h3>Web</h3>
-      <p>HTML, CSS, React, REST APIs</p>
-    </div>
-    <div class="card">
-      <h3>DevOps</h3>
-      <p>Git, GitHub, Docker basics, Linux</p>
-    </div>
-    <div class="card">
-      <h3>Concepts</h3>
-      <p>DSA, OOP, System Design, Testing</p>
+      <h3>Certifications</h3>
+      <p>Advanced Python · PyTest Automation · Data Science · Machine Learning · Cloud Computing · DevOps</p>
     </div>
   </div>
 </section>
 
 <section id="projects">
-  <div class="projects">
+  <div class="section-grid">
     <div class="card">
-      <h3>Portfolio Website</h3>
-      <p>Personal portfolio built with modern UI, animations, and performance-focused design.</p>
+      <h3>AI-Powered Data Pipeline</h3>
+      <p>
+        Automated ML-driven pipeline processing 1M+ records daily,
+        reducing processing time by 60% and achieving 99.2% data accuracy.
+      </p>
     </div>
     <div class="card">
-      <h3>Automation Scripts</h3>
-      <p>Python-based scripts for automation, data processing, and testing workflows.</p>
-    </div>
-    <div class="card">
-      <h3>Learning Projects</h3>
-      <p>Hands-on projects exploring backend APIs, databases, and scalable architectures.</p>
+      <h3>Full-Stack E-Commerce Platform</h3>
+      <p>
+        Scalable platform with React frontend and Python backend,
+        featuring payment integration, inventory management, and analytics.
+      </p>
     </div>
   </div>
 </section>
 
 <section id="contact">
-  <div class="card">
-    <h3>Let’s Connect</h3>
-    <p>
-      Email: <a href="mailto:nikhil.budhiraja@example.com">nikhil.budhiraja@example.com</a><br/>
-      LinkedIn: <a href="https://www.linkedin.com" target="_blank">linkedin.com</a>
-    </p>
+  <div class="section-grid">
+    <div class="card">
+      <h3>Let’s Connect</h3>
+      <p>Email: <a href="mailto:nikhilbudhiraja002@gmail.com">nikhilbudhiraja002@gmail.com</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/nikhil-budhiraja-050534190/" target="_blank">linkedin.com/in/nikhil-budhiraja</a></p>
+    </div>
   </div>
 </section>
 
 <footer>
-  © 2026 Nikhil Budhiraja · Built with precision & purpose
+  © 2026 Nikhil Budhiraja · Built for impact
 </footer>
 
 <script>
@@ -312,14 +334,14 @@
       this.x = Math.random() * w;
       this.y = Math.random() * h;
       this.r = Math.random() * 2 + 1;
-      this.vx = (Math.random() - 0.5) * 0.5;
-      this.vy = (Math.random() - 0.5) * 0.5;
+      this.vx = (Math.random() - 0.5) * 0.4;
+      this.vy = (Math.random() - 0.5) * 0.4;
       this.a = Math.random() * 0.6 + 0.2;
     }
     draw() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(108,242,194,${this.a})`;
+      ctx.fillStyle = `rgba(56,189,248,${this.a})`;
       ctx.fill();
     }
     update() {
@@ -331,7 +353,7 @@
 
   function init() {
     resize();
-    particles = Array.from({ length: Math.floor(w / 10) }, () => new Particle());
+    particles = Array.from({ length: Math.floor(w / 12) }, () => new Particle());
   }
 
   function animate() {
